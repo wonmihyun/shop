@@ -5,9 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import NotFound from './pages/NotFound';
-import AllItems from './pages/NotFound';
-import NewItems from './pages/NotFound';
-import Cart from './pages/NotFound';
+import AllItems from './pages/AllItems';
+import NewItems from './pages/NewItems';
+import Cart from './pages/Cart';
 
 
 /*
