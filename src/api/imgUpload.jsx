@@ -1,36 +1,33 @@
 // https://cloudinary.com/documentation/upload_images
 
-import React from 'react';
+export async function upLoadImage(file){
+    try{
+        const formData = new FormData();
+        formData.append('file',file);
+        formData.append('upload_preset', process.env.REACT_APP_CLOUDINARY_PRESET); // cloudinary preset
 
-export async function imgUpload(file){
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", process.env.REACT_APP_CLOUDINARY_PRESET);
+        // response 응답 
+        const res = await fetch(process.env.REACT_APP_CLOUDINARY_URL,{
+            // 파일 가져오기 
+            method : 'POST',
+            body : formData,
+        }); 
 
-    return fetch(process.env.REACT_APP_CLOUDINARY_URL,{
-        method: "POST",
-        body: formData
-    })
-    .then((res)=>res.json())
-    .then((data)=>data.url);
+        // 업로드 되었는지 확인 res.ok 200번 성공 
+        if(!res.ok){
+            throw new Error(res.status);
 
+        }
+        const data = await res.json();
+        return data.url;
 
-      
-
-    // for (let i = 0; i < files.length; i++) {
-    //   let file = files[i];
-      
-  
-    //   fetch(url, {
-    //     method: "POST",
-    //     body: formData
-    //   })
-    //     .then((response) => {
-    //       return response.text();
-    //     })
-    //     .then((data) => {
-    //       document.getElementById("data").innerHTML += data;
-    //     });
-    // }
+    }
+    // 업로드 실패 
+    catch(error){
+        console.error(error);
+        throw error;
+    }
+    
+    
 }
 

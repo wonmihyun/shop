@@ -12,8 +12,11 @@ import { getAuth,
   onAuthStateChanged  
 } from "firebase/auth";
 
-import {getDatabase , ref , get} from 'firebase/database';
+import {getDatabase , ref , get, set} from 'firebase/database';
 // 파이어베이스의 데이터 베이스에 있는 정도를 가져오는 훅 
+import {v4 as uuid} from 'uuid'; // uuid 고유 식별자를 생성해주는 패키지 
+
+
 
 // .env.local 
 const firebaseConfig = {
@@ -93,5 +96,26 @@ async function addminUser(user){
   }
 }
 
+// 파이어베이스에 상품 정보 연동하기 
+export async function addProduct(product, image){
+  const id = uuid();
+  return set(ref(database, `products/${id}`),{
+    ...product,
+    id,
+    price : parseInt(product.price),
+    image,
+    option : product.option.split(',').map(option => option.trim()),
+    
+  })
+}
 
-
+// 파이어베이스 database에 있는 정보 가져오기 
+export async function getProducts(){
+  return get(ref(database, `products`)).then((snapshot)=>{ // snapshot : 렌더링 
+    if(snapshot.exists()){
+      return Object.values(snapshot.val())
+    }
+    return [];
+  }) 
+   
+}

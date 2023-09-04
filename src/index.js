@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import AllItems from './pages/AllItems';
 import NewItems from './pages/NewItems';
 import Cart from './pages/Cart';
+import { useAuthContext } from './context/AuthConfirm';
 
 
 /*
@@ -39,13 +40,47 @@ import Cart from './pages/Cart';
 //   ]}
 //  ])
 
-// package.json안에 설정한 homepage의 주소를 자동으로 받아오는 명령어 
+
+
+const ProtectedRouter=({checkAdmin, children})=>{
+    const {user} = useAuthContext();
+    // 비회원   
+    if(!user || (checkAdmin && !user.isAdmin)){
+      return <Navigate to='/' replace/> 
+    }
+    return children
+  }
+
 const basename = process.env.PUBLIC_URL; 
+// package.json안에 설정한 homepage의 주소를 자동으로 받아오는 명령어 
 const routes = [
-  {path : '/', element : <App/>},
-  {path : '/items', element:<AllItems/>},
-  {path : '/items/new', element:<NewItems/>},
-  {path : '/cart', element : <Cart/>}
+  {
+    path : '/',
+    element : <App/>,
+    errorElement : <NotFound/>,
+    children : [
+      {path : '/items',  element:<AllItems/>},
+      {path : '/items/new', 
+      element: 
+      // 회원 인증이 되었으면 NewItems꺼내옴
+      <ProtectedRouter>
+          <NewItems/>
+      </ProtectedRouter> 
+      },
+      // 회원 인증이 되었으면 Cart꺼내옴
+      {path : '/cart', element : 
+      <ProtectedRouter>
+        <Cart/>
+      </ProtectedRouter>
+      },
+    ]
+
+  }
+
+  // {path : '/', element : <App/>},
+  // {path : '/items', element:<AllItems/>},
+  // {path : '/items/new', element:<NewItems/>},
+  // {path : '/cart', element : <Cart/>}
 ]
 
 const router = createBrowserRouter(routes, {basename : basename});
