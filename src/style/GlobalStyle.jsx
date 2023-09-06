@@ -51,6 +51,71 @@ table {
 a{
 	text-decoration: none;
 }
+
+/* custom */
+
+.categoryTitle{
+	text-align: center;
+	font-size : 30px;
+	font-weight: normal;
+	margin-bottom: 24px;
+	 
+}
+
+button{
+	background-color : navy;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    //padding: 12px 0px;
+}
+
+.container{
+	padding-top: 100px;
+	max-width: 1280px;
+	margin: 0px auto;
+
+}
+.productList{
+	display: flex;
+	gap :36px 5%; 
+	flex-wrap: wrap;
+}
+
+.productList > li{
+	 flex-shrink : 0;
+	 flex-basis: 30%;
+}
+.productList > li img{
+	width: 100%;
+	display: block;
+}
+
+.textWrap{
+	margin-top: 24px;
+}
+.textWrap .itemTitle{
+	font-weight: normal;
+	font-size: 16px;
+	margin-bottom: 12px;
+}
+.textWrap .itemFlex{
+	display: flex;
+	justify-content: space-between;
+}
+
+.textWrap .itemFlex p{
+	font-size: 14px;
+}
+
+
+
+ 
+
+
+
+
 `
 
 export default GlobalStyle;

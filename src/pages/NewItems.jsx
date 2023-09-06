@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {upLoadImage} from '../api/imgUpload'; // imgUpload 
 import {addProduct} from '../api/firebase';
+import styled from 'styled-components';
 
 export default function NewItems(){
 
@@ -65,11 +66,15 @@ export default function NewItems(){
     }   
  
     return (
-        <>
+        <div className='container'>
+        <FormContainer> 
         {success && <p>{success}</p>}
-        {file && (
+        <div className='imgWrap'>
+            {file && (
             <img src={URL.createObjectURL(file)}/>
         )}
+        </div>
+
         <form onSubmit={onSubmit}>
             <input type='file' name="file" accept="image/*" onChange={onChange}/>
             <input type='text' name="title" placeholder='제목' value={product.title} onChange={onChange}/>
@@ -81,9 +86,48 @@ export default function NewItems(){
                 {isLoading ? '업로드 중' : '제품 등록하기'}
             </button>
         </form>
-
-        </>
+     
+        </FormContainer>
+        </div>
     )
-
-
 }
+
+const FormContainer = styled.div`
+    max-width: 1280px;
+    padding: 30px 0px;
+    margin : 0px auto;
+
+    display: flex;
+    gap: 36px;
+    .imgWrap{
+        max-width : 500px;
+        height: 500px;
+        img{
+            height: 100%;
+            display: block;
+
+        } 
+    }
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap : 12px;
+
+        input{
+            width: 100%;
+            box-sizing: border-box;
+            height: 30px;
+        }
+        button{
+            /* background-color : navy;
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            cursor: pointer;
+            padding: 12px 0px; */
+            margin-top : 50px;
+        }
+    }
+
+`

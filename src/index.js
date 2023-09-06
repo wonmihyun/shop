@@ -9,7 +9,13 @@ import AllItems from './pages/AllItems';
 import NewItems from './pages/NewItems';
 import Cart from './pages/Cart';
 import { useAuthContext } from './context/AuthConfirm';
-
+import Clothes from './pages/Clothes';
+import Kitchen from './pages/Kitchen';
+import Bedding from './pages/Bedding';
+import Daily from './pages/Daily';
+import Acc from './pages/Acc';
+import SlipWear from './pages/SlipWear';
+import Clean from './pages/Clean';
 
 /*
   gh-pages로 연동하게 되면 주소 뒤에 /repository 이름이 붙게 된다.
@@ -73,6 +79,35 @@ const routes = [
         <Cart/>
       </ProtectedRouter>
       },
+      {
+        path : '/items/의류',
+        element : <Clothes/>,
+      },
+      {
+        path : '/items/주방',
+        element : <Kitchen/>,
+      },
+      {
+        path : '/items/침구',
+        element : <Bedding/>,
+      },
+      {
+        path : '/items/생활용품',
+        element : <Daily/>,
+      },
+      {
+        path : '/items/패션 잡화',
+        element : <Acc/>,
+      },
+      {
+        path : '/items/슬립 웨어',
+        element : <SlipWear/>,
+      },
+      {
+        path : '/items/청소용품',
+        element : <Clean/>,
+      },
+       
     ]
 
   }

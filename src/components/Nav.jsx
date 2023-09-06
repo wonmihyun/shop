@@ -57,10 +57,18 @@ export default function Nav(){
 }
 
 const HeaderContainer = styled.header`
+    position: fixed;
+    top : 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    max-width: 1280px;
+    margin: 0px auto;
     padding : 12px;
-    border-bottom : solid 1px #dddddd;
     display: flex;
     align-items: center;
+    background: rgba(255,255,255,0.8);
     
     .title{
         font-size: 20px;
@@ -76,6 +84,13 @@ const HeaderContainer = styled.header`
             color:#333;
         }
     }
+
+    button{
+        border: none;
+        background: transparent;
+        color: #333333;
+    }
+
 `
 
 const UserWrap = styled.div`

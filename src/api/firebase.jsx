@@ -135,6 +135,22 @@ export async function getCategory(){
   catch(error){
     console.error(error);  
     throw error;
-    
+
   }
 }
+
+// 카테고리 필터 
+export async function getCategoryProduct(category){
+  return get (ref(database, 'products'))
+  .then((snapshot)=>{
+    if(snapshot.exists()){
+      const allProduct = Object.values(snapshot.val())
+      const filterProduct = allProduct.filter((product)=>
+      product.category === category
+      )
+      return filterProduct;
+    }
+    return [];
+  })
+}
+
