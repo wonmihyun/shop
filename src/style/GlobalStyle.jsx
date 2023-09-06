@@ -59,6 +59,7 @@ a{
 	font-size : 30px;
 	font-weight: normal;
 	margin-bottom: 24px;
+	
 	 
 }
 
