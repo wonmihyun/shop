@@ -119,3 +119,22 @@ export async function getProducts(){
   }) 
    
 }
+
+// 카테고리 불러오기 
+export async function getCategory(){
+  const database = getDatabase();
+  const categoryRef = ref(database, `products`);
+  try{
+    const snapshot = await get(categoryRef);
+    if(snapshot.exists()){
+      return Object.values(snapshot.val());  
+    }
+    return []
+  }
+
+  catch(error){
+    console.error(error);  
+    throw error;
+    
+  }
+}
