@@ -15,8 +15,8 @@ import { getAuth,
 import {getDatabase , ref , get, set} from 'firebase/database';
 // 파이어베이스의 데이터 베이스에 있는 정도를 가져오는 훅 
 import {v4 as uuid} from 'uuid'; // uuid 고유 식별자를 생성해주는 패키지 
-
-
+import { getStorage, ref as storageRef , getDownloadURL } from "firebase/storage"; // URL을 통해 데이터 다운로드  
+// Cloud Storage 참조에 대해 getDownloadURL() 메서드를 호출하여 파일의 다운로드 URL을 가져올 수 있습니다.
 
 // .env.local 
 const firebaseConfig = {
@@ -24,13 +24,21 @@ const firebaseConfig = {
   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
   projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   databaseURL : process.env.REACT_APP_FIREBASE_DB_URL,
+  storageBucket : process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId : process.env.REACT_APP_STORAGE_MESSAGING_SENDER_ID,
+
   
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(); // 매개변수에 app 추가
 const provider = new GoogleAuthProvider();
 const database = getDatabase(app);
+const storage = getStorage(app); // 추가 
+
+export {storage}; // 추가 
+export {auth}; // 추가
+
 
 // 자동 로그인 방지 (계정 로그인)
 provider.setCustomParameters({
@@ -154,3 +162,15 @@ export async function getCategoryProduct(category){
   })
 }
 
+ // 스토리지 이미지 불러오기 
+ export async function loadSlideImage(imgPath) {
+    const storage = getStorage();
+    try{
+      const imgRef = storageRef(storage, imgPath);
+      const downloadURL = await getDownloadURL(imgRef);
+      return downloadURL;
+    }
+    catch(error){
+        console.error(error);
+    }
+ }

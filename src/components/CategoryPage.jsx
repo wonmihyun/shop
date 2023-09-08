@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router-dom';
 import { getCategoryProduct } from '../api/firebase';
 import CategoryProductList from './CategoryProductList';
+import SliderContent from './SliderContent';
 
 export default function CategoryPage(){
     const [product, setProduct] = useState([]);
@@ -18,7 +19,19 @@ export default function CategoryPage(){
         })
     },[category]);
 
+    const slidePath = [
+        'https://firebasestorage.googleapis.com/v0/b/shop-4a3a4.appspot.com/o/1.jpg?alt=media&token=314bdd7b-86e1-452b-b6ea-ca2a459f3249',
+        
+        'https://firebasestorage.googleapis.com/v0/b/shop-4a3a4.appspot.com/o/15.jpg?alt=media&token=d7dcd3c4-ffa1-4e65-b469-63a45e2ce253',
+        
+        'https://firebasestorage.googleapis.com/v0/b/shop-4a3a4.appspot.com/o/35.jpg?alt=media&token=992907bc-ced0-42e0-844e-16811817c232',
+    ]
+
     return (
-        <CategoryProductList category={category} product={product}/>
+        <>
+            <SliderContent imgUrls={slidePath}/>
+            <CategoryProductList category={category} product={product}/>
+        </>
+         
     )
 }

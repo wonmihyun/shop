@@ -5,6 +5,7 @@ import GlobalStyle from './style/GlobalStyle';
 import { AuthContextProvider } from './context/AuthConfirm';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Products from './components/Products';
+import SliderItem from './components/SliderItem';
 
 const queryClient = new QueryClient();
 
@@ -13,6 +14,7 @@ function App() {
     <>
     <QueryClientProvider client={queryClient}>
       <AuthContextProvider>
+        {/* <SliderItem/> */}
           <GlobalStyle/> {/* 전역변수 css 적용 컴포넌트 */}
           <Nav>
           <div className='container'>
