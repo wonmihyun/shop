@@ -16,6 +16,7 @@ import Daily from './pages/Daily';
 import Acc from './pages/Acc';
 import SlipWear from './pages/SlipWear';
 import Clean from './pages/Clean';
+import CategoryPage from './components/CategoryPage';
 
 /*
   gh-pages로 연동하게 되면 주소 뒤에 /repository 이름이 붙게 된다.
@@ -79,34 +80,42 @@ const routes = [
         <Cart/>
       </ProtectedRouter>
       },
+
       {
-        path : '/items/의류',
-        element : <Clothes/>,
+        path : '/items/:category',
+        element : <CategoryPage/>
       },
-      {
-        path : '/items/주방',
-        element : <Kitchen/>,
-      },
-      {
-        path : '/items/침구',
-        element : <Bedding/>,
-      },
-      {
-        path : '/items/생활용품',
-        element : <Daily/>,
-      },
-      {
-        path : '/items/패션 잡화',
-        element : <Acc/>,
-      },
-      {
-        path : '/items/슬립 웨어',
-        element : <SlipWear/>,
-      },
-      {
-        path : '/items/청소용품',
-        element : <Clean/>,
-      },
+
+
+
+      // {
+      //   path : '/items/의류',
+      //   element : <Clothes/>,
+      // },
+      // {
+      //   path : '/items/주방',
+      //   element : <Kitchen/>,
+      // },
+      // {
+      //   path : '/items/침구',
+      //   element : <Bedding/>,
+      // },
+      // {
+      //   path : '/items/생활용품',
+      //   element : <Daily/>,
+      // },
+      // {
+      //   path : '/items/패션 잡화',
+      //   element : <Acc/>,
+      // },
+      // {
+      //   path : '/items/슬립 웨어',
+      //   element : <SlipWear/>,
+      // },
+      // {
+      //   path : '/items/청소용품',
+      //   element : <Clean/>,
+      // },
        
     ]
 
