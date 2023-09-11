@@ -110,6 +110,73 @@ button{
 	font-size: 14px;
 }
 
+/* detailPage */
+.detailPage{
+	max-width: 768px;
+	display: flex;
+	gap: 68px;
+	margin : 0px auto;
+	
+	.detailImg{
+		max-width: 400px;
+		img{
+			width: 100%;
+			display: block;
+		}
+	}
+
+	.detailText{
+		max-width: 300px;
+		width: 300px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		h2{
+			font-size: 24px;
+			width: 100%;
+			border-bottom: solid 1px #dddddd;
+			padding-bottom: 16px;
+
+		}
+
+		p{
+			width: 100%;
+			padding-bottom: 16px;
+			border-bottom : solid 1px #dddddd;
+			color : gray;
+
+			span{
+				padding-left: 200px;
+			}
+		}
+		
+		
+	}
+	
+}
+
+// cart 장바구니
+.cartList{
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	border-top: solid 1px #dddddd;
+	padding: 24px 0px;
+	li{
+		display: flex;
+		align-items: center;
+		border-bottom: solid 1px #dddddd;
+		padding: 12px 0px;
+		gap: 12px;
+
+		img{
+			width: 100px;
+			display: block;
+		}
+	}
+
+}
 
 
  

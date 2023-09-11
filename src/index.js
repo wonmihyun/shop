@@ -88,9 +88,11 @@ const routes = [
       },
 
       {
-        path : '/:id',
+        path : '/items/detail/:id',
         element : <DetailPage/>
-      }
+      },
+
+ 
       
 
 

@@ -12,7 +12,7 @@ import { getAuth,
   onAuthStateChanged  
 } from "firebase/auth";
 
-import {getDatabase , ref , get, set} from 'firebase/database';
+import {getDatabase , ref , get, set, remove} from 'firebase/database';
 // 파이어베이스의 데이터 베이스에 있는 정도를 가져오는 훅 
 import {v4 as uuid} from 'uuid'; // uuid 고유 식별자를 생성해주는 패키지 
 import { getStorage, ref as storageRef , getDownloadURL } from "firebase/storage"; // URL을 통해 데이터 다운로드  
@@ -174,3 +174,30 @@ export async function getCategoryProduct(category){
         console.error(error);
     }
  }
+
+
+ // 카트 리스트 추가 
+ // 로그인한 계정의 카트 정보를 받아옴 
+ export async function getCart(userId){
+    return get(ref(database, `cart/${userId}`))
+    .then((snapshot)=>{
+      const item = snapshot.val();
+      return Object.values(item);
+    })
+ }
+
+ export async function updateCart(userId,product){ // 회원 계정 정보
+    //return set(ref(database, `cart/${userId}/${product.id}`), product);
+    console.log(userId,product);
+   try{
+    const cartRef = ref(database, `cart/${userId}/${product.id}`);
+    await set(cartRef, product);
+
+   }catch(error){
+    console.error(error);
+   }  
+}
+
+export async function deleteItemCart(userId, productId){
+  return remove(ref(database, `cart/${userId}/${productId}`))
+}

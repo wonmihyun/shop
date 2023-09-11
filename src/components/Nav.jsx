@@ -5,7 +5,7 @@ import {login, logout, userState} from '../api/firebase'; // firebase 가져오�
 import UserData from './UserData';
 import {BiCloset, BiIdCard} from 'react-icons/bi';
 import { useAuthConfirm } from '../context/AuthConfirm';
-
+ 
 
 export default function Nav(){
 
@@ -33,7 +33,8 @@ export default function Nav(){
     return(
         <HeaderContainer>
             <Link to='/'>
-                <h1 className='title'>title</h1>
+                <h1 className='title'><img className = 'logoImg' src='./img/logoImg.jpg'></img></h1>
+                {/* <h1 className='title'>title</h1> */}
             </Link>
             <nav>
                 <Link to='/items'>AllItems</Link>
@@ -73,6 +74,9 @@ const HeaderContainer = styled.header`
     .title{
         font-size: 20px;
         color: #333;
+        
+        
+        
     }
     nav{
         display: flex;

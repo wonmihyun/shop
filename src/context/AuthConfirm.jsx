@@ -15,7 +15,7 @@ export function AuthContextProvider({children}){
     },[]); // 무한루프 방지 
 
     return (
-        <AuthConfirm.Provider value={{user, login, logout}}>
+        <AuthConfirm.Provider value={{user, uid:user && user.uid, login, logout}}>
             {children}
         </AuthConfirm.Provider>
     )
