@@ -50,10 +50,10 @@ export default function DetailPage(){
           
             <div className='detailText'>
                 <h2><span>{title}</span></h2>
-                <p>가격 <span>{setPrice}원</span></p>
+                <p>가격 <span className='price'>{setPrice}</span>원</p>
                 {/* <p><span>가격{price}</span></p> */}
                 <div className='detailOpt'>
-                    <label className='labelText' htmlFor="optSelect">옵션</label>
+                    <label className='labelText' htmlFor="optSelect">옵션 </label>
                     <select id='optSelect' onChange={SelectOpt} value={selected}>
                         {option && option.map((option, index) => (
                             <option key={index}>{option}</option>
@@ -61,9 +61,11 @@ export default function DetailPage(){
                     </select>
                 </div>
             </div>
+                <div className='detailText'> 
                 <button className='cartBtn' onClick={CartItem}>장바구니 담기</button>
                 <button className='buyBtn'>구매하기</button>
                 {success && <p className='alertMsg'>{success}</p>}
+                </div>
             </div>
         </div>
             

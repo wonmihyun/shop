@@ -18,6 +18,7 @@ import SlipWear from './pages/SlipWear';
 import Clean from './pages/Clean';
 import CategoryPage from './components/CategoryPage';
 import DetailPage from './pages/DetailPage';
+import Search from './pages/Search';
 
 /*
   gh-pages로 연동하게 되면 주소 뒤에 /repository 이름이 붙게 된다.
@@ -91,6 +92,11 @@ const routes = [
         path : '/items/detail/:id',
         element : <DetailPage/>
       },
+
+      {
+        path : '/search',
+        element : <Search/>
+      }
 
  
       

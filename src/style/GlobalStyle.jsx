@@ -126,8 +126,8 @@ button{
 	}
 
 	.detailText{
-		max-width: 300px;
-		width: 300px;
+		max-width: 600px;
+		width: 600px;
 		display: flex;
 		flex-direction: column;
 		gap: 16px;
@@ -137,7 +137,7 @@ button{
 			width: 100%;
 			border-bottom: solid 1px #dddddd;
 			padding-bottom: 16px;
-
+			
 		}
 
 		p{
@@ -146,13 +146,23 @@ button{
 			border-bottom : solid 1px #dddddd;
 			color : gray;
 
-			span{
-				padding-left: 200px;
-			}
 		}
-		
-		
+
+		.cartBtn, .buyBtn{
+			width: 100px;
+			padding: 5px;
+		}
+
+		.price{
+			padding-left: 100px;
+		}
+
+		 
+
+ 
 	}
+ 
+	 
 	
 }
 

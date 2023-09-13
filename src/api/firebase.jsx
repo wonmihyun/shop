@@ -198,6 +198,39 @@ export async function getCategoryProduct(category){
    }  
 }
 
+ 
 export async function deleteItemCart(userId, productId){
   return remove(ref(database, `cart/${userId}/${productId}`))
+}
+
+
+export async function searchProducts(query){
+   try{
+    const dbRef = ref(database, 'products'); 
+    // 렌더링
+    const snapshot = await get(dbRef); 
+
+    if(snapshot.exists()){
+      const data = snapshot.val();
+      const allProduct = Object.values(data);
+
+      // 상품을 검색했을때 검색한 상품이 없으면 출력
+      if(allProduct.length === 0){
+        return [];
+      }
+
+      // 상품을 검색했을때 검색한 상품을 필터링 해줌 
+      const matchItems = allProduct.filter((product)=>{
+        const itemTitle = product.title.toLowerCase(); // 받아온 문자열을 소문자로 변환
+        return itemTitle.includes(query.toLowerCase());
+      })
+
+      return matchItems;
+    }else{
+      return [];
+    }
+
+   }catch(error){
+    console.error(error);
+   }
 }

@@ -3,7 +3,11 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {login, logout, userState} from '../api/firebase'; // firebase 가져오기 
 import UserData from './UserData';
-import {BiCloset, BiIdCard} from 'react-icons/bi';
+
+// 아이콘 
+import {BiCloset } from 'react-icons/bi';
+import {CgShoppingCart} from 'react-icons/cg';
+import {AiOutlineSearch} from 'react-icons/ai';
 import { useAuthConfirm } from '../context/AuthConfirm';
  
 
@@ -38,15 +42,18 @@ export default function Nav(){
             </Link>
             <nav>
                 <Link to='/items'>AllItems</Link>
-                <Link to='/cart'>장바구니</Link>
+ 
             </nav>
             <UserWrap>
+                <Link to='/search'><AiOutlineSearch className='write'/></Link>
                 {user && user.isAdmin && (
                     <Link to='/items/new'>
                         <BiCloset className='write'/>
                     </Link>
                     
                 )}
+
+                <Link to='/cart'><CgShoppingCart className='write'/></Link>
 
                 {user && <UserData user={user}/>}
                 {!user && <button onClick={login} className='loginBtn'>login</button> }
