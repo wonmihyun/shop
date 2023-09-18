@@ -18,7 +18,6 @@ export default function Cart(){
         최종적으로 prev에 담아오는 역할을 한다
         이 작업을 reduce로 배열에서 반복하며, 목록을 업데이트 한다.
         */
-
         )  
          
     const delivery = 3000;

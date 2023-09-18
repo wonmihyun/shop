@@ -3,6 +3,9 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import {login, logout, userState} from '../api/firebase'; // firebase 가져오기 
 import UserData from './UserData';
+import logoImg from '../img/일상.png';
+ 
+
 
 // 아이콘 
 import {BiCloset } from 'react-icons/bi';
@@ -37,12 +40,17 @@ export default function Nav(){
     return(
         <HeaderContainer>
             <Link to='/'>
-                <h1 className='title'><img className = 'logoImg' src='./img/logoImg.jpg'></img></h1>
+                {/* <h1 className='title'><img className = 'logoImg' src='./public/logoImg.jpg'></img></h1> */}
+                {/* <h1 className='title'><img src={logoImg}></img></h1> */}
+                <img src={logoImg} className='logoImg'/>
+                {/* <img src={`${process.env.PUBLIC_URL}/img/일상.png`}/> */}
                 {/* <h1 className='title'>title</h1> */}
+
+
             </Link>
             <nav>
                 <Link to='/items'>AllItems</Link>
- 
+              
             </nav>
             <UserWrap>
                 <Link to='/search'><AiOutlineSearch className='write'/></Link>
@@ -55,10 +63,25 @@ export default function Nav(){
 
                 <Link to='/cart'><CgShoppingCart className='write'/></Link>
 
-                {user && <UserData user={user}/>}
-                {!user && <button onClick={login} className='loginBtn'>login</button> }
-                {user && <button onClick={useLogout} className='logoutBtn'>logout</button>} 
+                 
+                {/* {!user && <button onClick={login} className='loginBtn'>login</button> } */}
+                {/* {user && <button onClick={useLogout} className='logoutBtn'>logout</button>}  */}
                 
+                {user ? (
+                    <>
+                    {user && <UserData user={user}/>}
+                    <button onClick = {useLogout} className='logoutBtn'>logout</button>
+                    </>
+                ) : (
+                    <Link to='/login'>
+                    <button className='loginBtn'>login</button>
+                    </Link>
+                )}
+
+                 
+
+
+
             </UserWrap>
         </HeaderContainer>
     )
@@ -73,18 +96,24 @@ const HeaderContainer = styled.header`
 
     max-width: 1280px;
     margin: 0px auto;
-    padding : 12px;
+    padding : 12px ;
     display: flex;
     align-items: center;
     background: rgba(255,255,255,0.8);
+   
     
     .title{
         font-size: 20px;
         color: #333;
-        
-        
-        
+ 
     }
+
+    .logoImg{
+        width: 120px;
+        height: 75px;
+    
+    }
+
     nav{
         display: flex;
         align-items: center;
@@ -112,7 +141,7 @@ const UserWrap = styled.div`
     a {
         .write{
             font-size : 36px;
-            color : pink;
+            color : lightgray;
         
         }
     }

@@ -19,6 +19,10 @@ export default function CartList({product, index}){
         }
         addItemCart.mutate({...product, quantity : product.quantity - 1})
     }
+
+ 
+ 
+
  
     const ItemDelete = () => {
         deleteItem.mutate(product.id);

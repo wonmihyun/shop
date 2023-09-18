@@ -9,10 +9,12 @@ import { getAuth,
   signInWithPopup, // 로그인시 팝업
   signOut,          // 로그아웃
   GoogleAuthProvider, // 사용자 정보 가져오기  
-  onAuthStateChanged  
+  onAuthStateChanged,  
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword
 } from "firebase/auth";
 
-import {getDatabase , ref , get, set, remove} from 'firebase/database';
+import {getDatabase , ref , get, set, remove , query, orderByChild, equalTo } from 'firebase/database';
 // 파이어베이스의 데이터 베이스에 있는 정도를 가져오는 훅 
 import {v4 as uuid} from 'uuid'; // uuid 고유 식별자를 생성해주는 패키지 
 import { getStorage, ref as storageRef , getDownloadURL } from "firebase/storage"; // URL을 통해 데이터 다운로드  
@@ -50,7 +52,7 @@ provider.setCustomParameters({
 
 
 
-// 로그인 정보 받아오기 영역 
+// 구글 로그인 정보 받아오기 영역 
 export async function login(){
   
     return signInWithPopup(auth, provider)
@@ -233,4 +235,53 @@ export async function searchProducts(query){
    }catch(error){
     console.error(error);
    }
+}
+
+// 회원가입 
+export async function joinEmail(email,password){
+
+  const auth = getAuth();
+   try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email,password)
+    const user = userCredential.user;
+    console.log(user);
+   }
+   catch(error){
+    console.error(error);
+   }
+}
+
+
+// 이메일 유효성 검사  
+export async function checkEmail(email){
+  const database = getDatabase();
+  const userRef = ref(database, 'users');
+
+  try{
+    const emailQuery = query(userRef, orderByChild('email'), equalTo(email));
+    const snapshot = await get(emailQuery);
+
+    if(snapshot.exists()){
+      return true;
+    } else{
+      return false;
+    }
+
+  }
+  catch(error){
+    console.error(error);
+  }
+
+}
+
+// 이메일 로그인 
+export async function loginEmail(email,password){ // 이메일, 패스워드로 판별
+  try{
+    // sign 검사 
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    return userCredential.user;
+  }catch(error){
+    console.error(error);
+  }
+
 }
