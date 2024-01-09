@@ -42,8 +42,8 @@ export default function Login(){
 
 
     return(
-        <div className='container'>
-            <h2>로그인</h2>
+        <div className='login container'>
+            <h2 style={{margin : '10px 0px 10px'}}>로그인</h2>
             <form onSubmit={loginEvent}>
                 <input 
                 type='email' 
@@ -51,27 +51,23 @@ export default function Login(){
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
                 />
-
-                <input
+                <br></br> 
+                <input style={{marginTop : '10px'}}
                     type='password'
                     placeholder='비밀번호를 입력하세요'
                     value={password}
                     onChange={(e)=>setPassword(e.target.value)}
                 />
-
-                <button type='submit'>로그인</button>
+                <button type='submit' style={{marginLeft : '5px'}}>로그인</button>
                 {errorMsg && <span className='errorText'>{errorMsg}</span>}
 
             </form>
-
-            <Link to='/join'>
-                <button>회원가입</button>
+        
+            <Link to='/join' >
+                <button style={{marginTop : '10px'}}>회원가입</button>
             </Link>
-            <button onClick={googleLogin}>구글아이디로 로그인</button>
-
-
-
-
+             
+            <button onClick={googleLogin} style={{marginLeft : '5px'}}>구글아이디로 로그인</button>
         </div>
     )
 }

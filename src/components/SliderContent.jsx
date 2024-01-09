@@ -36,7 +36,7 @@ export default function SliderContent({imgUrls}){
 
     return (
         <>
-        <Swiper style={slider}
+        {/* <Swiper style={slider}
             slidesPerView={1}
             loop = {true}
             autoplay = {{
@@ -55,7 +55,7 @@ export default function SliderContent({imgUrls}){
                 ))
             }
              
-        </Swiper>
+        </Swiper> */}
         </>
     )
 }

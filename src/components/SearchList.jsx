@@ -14,5 +14,6 @@ export default function SearchList({products : {id , image, title, price, option
         <li>
              <DetailPageEvent product={{id,image,title,price, option, description}}/>
         </li>
+        
     )    
 }

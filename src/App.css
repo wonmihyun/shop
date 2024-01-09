@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu&display=swap");
+
 .App {
   text-align: center;
 }
@@ -7,6 +9,15 @@
   pointer-events: none;
 }
 
+.categoryTitle{
+  position: relative;
+  padding: 30px;
+}
+
+ 
+
+ 
+ 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

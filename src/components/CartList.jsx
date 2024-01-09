@@ -41,5 +41,6 @@ export default function CartList({product, index}){
             <button onClick={()=>ItemDelete(product.id)}>삭제</button>
             
        </li>
+       
     )
 }

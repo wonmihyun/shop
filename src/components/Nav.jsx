@@ -40,7 +40,7 @@ export default function Nav(){
     return(
         <HeaderContainer>
             <Link to='/'>
-                {/* <h1 className='title'><img className = 'logoImg' src='./public/logoImg.jpg'></img></h1> */}
+                 
                 {/* <h1 className='title'><img src={logoImg}></img></h1> */}
                 <img src={logoImg} className='logoImg'/>
                 {/* <img src={`${process.env.PUBLIC_URL}/img/일상.png`}/> */}
@@ -62,8 +62,7 @@ export default function Nav(){
                 )}
 
                 <Link to='/cart'><CgShoppingCart className='write'/></Link>
-
-                 
+ 
                 {/* {!user && <button onClick={login} className='loginBtn'>login</button> } */}
                 {/* {user && <button onClick={useLogout} className='logoutBtn'>logout</button>}  */}
                 
@@ -77,11 +76,7 @@ export default function Nav(){
                     <button className='loginBtn'>login</button>
                     </Link>
                 )}
-
-                 
-
-
-
+ 
             </UserWrap>
         </HeaderContainer>
     )
