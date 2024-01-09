@@ -29,5 +29,6 @@ export async function upLoadImage(file){
     }
     
     
+    
 }
 
