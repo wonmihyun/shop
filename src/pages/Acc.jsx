@@ -14,7 +14,7 @@ export default function Kitchen(){
         .catch((error)=>{
             console.error(error);
         })
-    },[]);
+    },[]); 
 
     return(
         <>
