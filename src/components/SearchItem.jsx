@@ -29,7 +29,8 @@ export default function SearchItem(){
 
     return (
         <div className='container'>
-            <input type='text' value={query} onChange={inputEvent}/> 
+            <br></br>
+            검색창 <input type='text' value={query} onChange={inputEvent}/> 
             {/* {result.length > 0 && (
                 // <ul>
                 //     {result.map((item)=>(
@@ -42,9 +43,11 @@ export default function SearchItem(){
             )} */}
 
             <ul>
+                 
                 {result.map((product)=>(
                     <SearchList key={product.id} products={product}/>
                 ))}
+                
             </ul>
         </div>
     )

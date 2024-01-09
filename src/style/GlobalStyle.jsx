@@ -79,6 +79,7 @@ button{
 	padding-top: 100px;
 	max-width: 1280px;
 	margin: 0px auto;
+
 }
 .login{
 	background : 'pink';
